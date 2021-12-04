@@ -1,20 +1,12 @@
+export {};
+
 const express = require("express");
-const { ApolloServer, gql } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-express");
 const { ApolloServerPluginDrainHttpServer } = require("apollo-server-core");
 const http = require("http");
+const resolvers = require("./resolvers");
+const typeDefs = require("./schema");
 require("dotenv").config();
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello world!",
-  },
-};
 
 async function startApolloServer(typeDefs: any, resolvers: any) {
   const app = express();
