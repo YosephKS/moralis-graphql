@@ -18,7 +18,8 @@
   },
   "scripts": {
     "start": "nodemon index.ts",
-    "build": "tsc --project ./"
+    "build": "tsc --project ./",
+    "serve": "node build/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
