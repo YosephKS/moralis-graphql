@@ -3,6 +3,7 @@ export {};
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const { ApolloServerPluginDrainHttpServer } = require("apollo-server-core");
+const GraphQLJSON = require("graphql-type-json");
 const http = require("http");
 const resolvers = require("./resolvers");
 const typeDefs = require("./schema");
@@ -14,7 +15,10 @@ async function startApolloServer(typeDefs: any, resolvers: any) {
   const port = process.env.PORT || 4000;
   const server = new ApolloServer({
     typeDefs,
-    resolvers,
+    resolvers: {
+      ...resolvers,
+      JSON: GraphQLJSON,
+    },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
   await server.start();

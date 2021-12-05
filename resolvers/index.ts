@@ -1,11 +1,16 @@
 export {};
 
-const { NativeQuery } = require("./native/index");
+const { NativeQuery, NativeMutation } = require("./native/index");
 
 const Query = {
   ...NativeQuery,
 };
 
+const Mutation = {
+  ...NativeMutation,
+};
+
 module.exports = {
   Query,
+  Mutation,
 };

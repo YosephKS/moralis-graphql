@@ -3,7 +3,17 @@ export {};
 const { restApiHandler, RESTAPIMethod } = require("../../../handler/restApi");
 require("dotenv").config;
 
-const getDateToBlock = (_: unknown, args: any) => {
+interface getDateToBlockInput {
+  chain?: string;
+  providerUrl?: string;
+  date: string;
+}
+
+interface getDateToBlockArgs {
+  input: getDateToBlockArgs;
+}
+
+const getDateToBlock = (_: unknown, args: getDateToBlockArgs) => {
   const { input: params } = args || {};
   return restApiHandler({
     functionName: "getDateToBlock",
